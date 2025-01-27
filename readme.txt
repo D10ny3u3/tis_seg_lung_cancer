@@ -1,7 +1,7 @@
 Reference of provided code
 
-NB! We provide raw working scripts used for the development and implementation.
-Upon publication we will annotate and prepare code for end users.
+NB! We provide working scripts used for the development and implementation.
+This repositorium is provided as is and non-supported.
 
 NB! Most of the experiments and scripts were run in anaconda environment
 using Ubuntu 22.04. We recommend using this setup.

@@ -1,6 +1,4 @@
-为了调适训练代码，新增了train_script_adj.py。主要变化：
-
-# `train_script_adj.py` 相对 `train_script.py` 的变化
+为了调适训练代码，新增了train_script_adj.py。主要变化如下。``dataset_v2.py``没有调整。
 
 ## 对比说明
 

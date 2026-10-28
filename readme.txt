@@ -1,3 +1,8 @@
+本仓库提供了对https://github.com/cpath-ukk/lung_cancer代码测试的过程。
+测试内容主要在组织分割部分（02、04）。
+根据当前环境、注释、文件系统等变异因素会对代码进行调整。供参考。
+
+原readme部分：
 Reference of provided code
 
 NB! We provide working scripts used for the development and implementation.

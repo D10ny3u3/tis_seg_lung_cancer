@@ -1,5 +1,6 @@
 - 下载 https://zenodo.org/records/14507273 到 `~/projects/kludt_reproduction/code/lung_cancer/04_WSI_inference/01_main_segmentation_algorithm/models/td`。
 参考：https://github.com/cpath-ukk/grandqc/issues/3
+在本仓库中，直接上传了。
 
 - 修改 wsi_tis_detect.py
 ```bash

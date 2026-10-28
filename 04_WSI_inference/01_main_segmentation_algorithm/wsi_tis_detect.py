@@ -16,7 +16,9 @@ One folder with single slides.
 ###MODEL(S)
 #MODEL TISSUE DETECTION:
 MODEL_TD_DIR = './models/td/'
-MODEL_TD_NAME = 'Vs04_model_E10_dict.pth' #E6 is alternative
+# {ORIGINAL} MODEL_TD_NAME = 'Vs04_model_E10_dict.pth' #E6 is alternative
+MODEL_TD_NAME = 'Tissue_Detection_MPP10.pth' #E6 is alternative
+
 MPP_MODEL_TD = 10
 M_P_S_MODEL_TD = 512
 ENCODER_MODEL_TD = 'timm-efficientnet-b0'

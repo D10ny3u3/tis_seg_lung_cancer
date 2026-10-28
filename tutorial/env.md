@@ -50,7 +50,7 @@ python -m pip install --force-reinstall "numpy==1.26.4" -i https://pypi.tuna.tsi
 
 ```
 
-从https://zenodo.org/records/12818382下载训练文件。放在```~/projects/kludt_reproduction/data/kludt_manual```目录下。
+从 https://zenodo.org/records/12818382 下载训练文件。放在```~/projects/kludt_reproduction/data/kludt_manual```目录下。
 
 新建一个python文件split_dataset.py在02_train_pixel_wise_segmentation目录下，对训练文件进行train和val的拆分。
 
@@ -59,7 +59,7 @@ from pathlib import Path
 import random
 import shutil
 
-root = Path("/home/suxin/projects/kludt_reproduction/data/kludt_manual")
+root = Path("~/projects/kludt_reproduction/data/kludt_manual")
 img_dir = root / "train" / "image"
 mask_dir = root / "train" / "mask"
 val_img_dir = root / "val" / "image"

@@ -59,7 +59,7 @@ from openslide import open_slide
 from PIL import Image
 import os
 from wsi_slide_info import slide_info
-from wsi_process import slide_process_single, slide_process_double
+from wsi_process import slide_process_single
 from wsi_maps import make_overlay
 import numpy as np
 import timeit
@@ -141,6 +141,24 @@ for slide_name in slide_names[start:end]:
         #GET SLIDE INFO
         p_s, patch_n_w_l0, patch_n_h_l0, mpp, w_l0, h_l0, obj_power = slide_info(slide, M_P_S_MODEL_1, MPP_MODEL_1)
 
+        # DIAGNOSTICS: verify patch resolution
+        print("\n--- WSI resolution diagnostics ---")
+        print("Slide:", slide_name)
+        print("p_s (level-0 read size):", p_s)
+        print("Model patch size:", M_P_S_MODEL_1)
+        print("Target model MPP:", MPP_MODEL_1)
+        print("mpp returned by slide_info:", mpp)
+        print("WSI dimensions:", slide.dimensions)
+        print("WSI level downsamples:", slide.level_downsamples)
+        print("WSI MPP X:", slide.properties.get("openslide.mpp-x"))
+        print("WSI MPP Y:", slide.properties.get("openslide.mpp-y"))
+
+        if mpp > 0:
+            estimated_patch_mpp = mpp * p_s / M_P_S_MODEL_1
+            print("Estimated saved patch MPP:", estimated_patch_mpp)
+        else:
+            print("WARNING: invalid MPP; cannot estimate patch resolution")
+
         if ONLY_SLIDE_INFO_FLAG:
             continue
 
@@ -159,7 +177,7 @@ for slide_name in slide_names[start:end]:
         Using original slide dimensions to regenerate tissue detection mask to MPP=2.0 to prevent losses of single 
         pixels and to achieve more concordance to model patch sizes. 
         '''
-
+        
         map, full_mask = slide_process_single(model_prim, tis_det_map_mpp, slide, patch_n_w_l0, patch_n_h_l0, p_s,
                                                   M_P_S_MODEL_1, colors, ENCODER_MODEL_1,
                                                   ENCODER_MODEL_1_WEIGHTS, DEVICE, BACK_CLASS, MPP_MODEL_1, mpp, w_l0, h_l0)
@@ -199,5 +217,7 @@ for slide_name in slide_names[start:end]:
         results.write(output_temp)
         results.close()
 
-    except:
-        print("There was some problem with the slide.")
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        raise

@@ -15,11 +15,11 @@
 |---|---|---|---|
 | `ACTIVATION` | `'softmax2d'` | `None` | 模型改为输出 logits，与 `CrossEntropyLoss` 及新 IoU 指标的 `argmax` 处理方式一致 |
 | `OVERSAMPLE_FLAG` | `True` | `False` | 使用普通平衡批次构建，不再走 oversampling 分支 |
-| `DATA_DIR` | `'/path/to/dataset'` | `'/home/suxin/projects/kludt_reproduction/data/kludt_manual'` | 改为本机数据集绝对路径 |
+| `DATA_DIR` | `'/path/to/dataset'` | `'/home/[User]/projects/kludt_reproduction/data/kludt_manual'` | 改为本机数据集绝对路径 |
 | `CLASSES` | `9999` | `13` | 明确为 13 类分割任务（包含背景/未标注类 0） |
 | `B_S_TRAIN` | `9999` | `4` | 训练 batch size 改为 4 |
 | `CLASS_WEIGHTS` | 11 个元素 | 13 个元素 | 与新类别数匹配：`[0.0] + [1.0] * 12` |
-| `MODEL_SAVE_NAME` | `'/data/v01/v01_E'` | `'/home/suxin/projects/kludt_reproduction/checkpoints/kludt_'` | 检查点改存到本机指定目录 |
+| `MODEL_SAVE_NAME` | `'/data/v01/v01_E'` | `'/home/[User]/projects/kludt_reproduction/checkpoints/kludt_'` | 检查点改存到本机指定目录 |
 | 训练指标 | 二分类式 `IoU(threshold=0.5)` | 自定义 `MulticlassIoU` | 支持多类别逐一计算 IoU |
 | 验证指标 | `IoU`、`Fscore`、`Accuracy` | 仅自定义 `MulticlassIoU` | 验证阶段不再报告 Fscore 和 Accuracy |
 | 训练前调试 | 无 | 新增一个 batch 的形状及前向输出检查 | 便于确认输入、标签和模型输出是否正确 |
@@ -51,13 +51,13 @@ ACTIVATION = None
 - `DATA_DIR` 从占位路径 `'/path/to/dataset'` 改为：
 
   ```python
-  '/home/suxin/projects/kludt_reproduction/data/kludt_manual'
+  '/home/[User]/projects/kludt_reproduction/data/kludt_manual'
   ```
 
 - `MODEL_SAVE_NAME` 从 `'/data/v01/v01_E'` 改为：
 
   ```python
-  '/home/suxin/projects/kludt_reproduction/checkpoints/kludt_'
+  '/home/[User]/projects/kludt_reproduction/checkpoints/kludt_'
   ```
 
 这两项修改使脚本依赖当前运行环境中的具体目录。运行前需要确认数据集目录和检查点保存目录存在。

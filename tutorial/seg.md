@@ -1,8 +1,8 @@
 - 下载 https://zenodo.org/records/14507273 到 `~/projects/kludt_reproduction/code/lung_cancer/04_WSI_inference/01_main_segmentation_algorithm/models/td`。
 参考：https://github.com/cpath-ukk/grandqc/issues/3
-在本仓库中，直接上传了。
+在本仓库中，直接上传了。不需要重复下载。这是从病理切片中提取分割组织/背景的模型。用的MPP是10。
 
-- 修改 wsi_tis_detect.py
+- 修改 wsi_tis_detect.py。本仓库已经改好了。
 ```bash
 MODEL_TD_DIR = './models/td/'
 MODEL_TD_NAME = 'Tissue_Detection_MPP10.pth'
